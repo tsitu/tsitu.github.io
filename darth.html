@@ -1,0 +1,181 @@
+
+<html>
+<head>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+  <script>if (!window.jQuery) { document.write('<script src="jquery.js"><\/script>'); }</script>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-61456096-1', 'auto');
+    ga('send', 'pageview');
+
+  </script>
+  <style>
+    #speed {
+      display: none;
+    }
+    #pause {
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body style="margin:0">
+  <div id="speed">
+    <div>
+      <h4>speed</h4>
+      <span id="pause">[pause]</span>
+    </div>
+    <span class="l">faster</span>
+    <input type="range" min="0" max="20" value="16" id="slider" class="l">
+    <span class="l">slower</span>
+  </div>
+  <script>
+  (function() {
+    var nl, openCSS, openAnim, animCount, markup, styles, time, writeStyleChar, writeStyles, paused;
+
+    text = "\n/* \n * Thanks to\n * pen#PwLXXP and Jake Albaugh for the demo, \n * u∕dechat for the script, \n * and Kris Triplett for the brilliant CSS art.\n * Let's begin! \n */\n/*\n * Speed slider:\n */\n#speed {\n  display: block; position: fixed;\n  z-index: 100; padding: 5px;\n  top: 15px; left: 26%;\n}\n#speed h4 {\n  display: inline-block; margin: 5px;\n}\n#speed .l {\n  float: left; margin: 1px 5px;\n}\n.pre { \n  overflow: auto;\n  position: fixed; width: 35%;\n  padding: 24px 12px;\n  top: 90px; height: 25%; left: 26%;\n}\n.pre, #speed {\n  background-color: #313744; color: #a6c3d4;\n  transition: left 500ms;\n  border: 1px solid rgba(0,0,0,0.2);\n  box-sizing: border-box;\n  border-radius: 3px;\n  box-shadow: 0px 4px 0px 2px rgba(0,0,0,0.1);\n}\n/*\n * Move these over...\n */\n.pre, #speed {\n  left: 60% \n}\n/*\n * Now for some HTML. \n */\n#html-text {\n  transition: top 300ms;\n  top: calc(25% + 115px);\n}\n/*\n * Undo some defaults\n */\n\n.bold {\n  font-weight: bold;\n}\n.container {\n  font-family: verdana, arial, helvetica, sans-serif;\n}\n.container a {\n  text-decoration: none; color: #369;\n}\n.container p {\n  margin: 0;\n}\n<!-- What should we create? -->\n\n<!-- Yes... The Dark Lord himself... -->\n\n<!--HTML first!-->\n\n<div id=\"vader\">\n  <div id=\"helmet\">\n    <div id=\"helMid\"></div>\n    <div id=\"leftThing\" class=\"thing\"></div>\n    <div id=\"rightThing\" class=\"thing\"></div>\n  </div>\n  <div id=\"leftEye\" class=\"eye\"></div>\n  <div id=\"rightEye\" class=\"eye\"></div> \n  <div id=\"leftBag\" class=\"bag\">(</div> \n  <div id=\"rightBag\" class=\"bag\">)</div>\n  <div id=\"bigLeft\"></div>\n  <div id=\"bigRight\"></div>\n  <div id=\"leftCheek\" class=\"cheek\"></div>\n  <div id=\"rightCheek\" class=\"cheek\"></div>\n  <div id=\"midFace\"></div>\n  <div id=\"roundStuff\">\n    <div class=\"roundThing\"></div>\n    <div class=\"roundThing\"></div>\n    <div class=\"roundThing\"></div>    \n  </div>    \n  <div id=\"nose\"></div>\n  <div id=\"grill\">\n    <div class=\"upright\"></div><p class=\"bottom b1\"></p>\n    <div class=\"upright\"></div><p class=\"bottom b2\"></p>\n    <div class=\"upright\"></div>\n    <div class=\"upright\"></div><p class=\"bottom b3\"></p>\n    <div class=\"upright\"></div><p class=\"bottom b4\"></p>\n    <div id=\"bottomLine\"></div>\n  </div>\n  <div id=\"chin\"></div>\n  <div id=\"coverLeft\" class=\"cover\"></div>\n  <div id=\"coverRight\" class=\"cover\"></div>\n  <div id=\"leftDown\" class=\"line\">\</div>\n  <div id=\"rightDown\" class=\"line\">/</div>\n</div>\n\n<!-- Here comes the CSS! -->\n\n#vader {\n  height: 600px;\n  width: 631px;\n  margin: 50px auto;\n  position: relative;\n  right: 20%;\n}\n#helmet {\n  width: 335px;\n  height: 268px;      \n  background-color: #000;\n  position: absolute;\n  left: 145px;\n  top: 15px;\n  -webkit-border-radius: 200px 200px 0 0;\n  -moz-border-radius: 200px 200px 0 0;\n  border-radius: 200px 200px 0 0;\n  z-index: 0;\n}\n#helMid {\n  width: 25px;\n  height: 268px;\n  border-left: 3px solid #fff;\n  border-right: 3px solid #fff;\n  position: absolute;\n  left: 155px;\n}\n#bigLeft {\n  width: 140px;\n  height: 275px;\n  background-color: #000;\n  border-top: 5px solid #fff;\n  border-left: 5px solid #fff;\n  position: absolute;\n  top: 231px;\n  left: 129px;\n  z-index: 1;\n  -webkit-border-top-left-radius: 75px;\n  -webkit-border-bottom-right-radius: 137px;\n  -moz-border-radius-topleft: 75px;\n  -moz-border-radius-bottomright: 137px;\n  border-top-left-radius: 75px;\n  border-bottom-right-radius: 137px;\n  -webkit-transform: rotate(20deg);\n  -moz-transform: rotate(20deg);\n  -o-transform: rotate(20deg);\n}\n.eye {\n  height: 70px;\n  width: 100px;\n  background-color: #fff;\n  position: absolute;\n  z-index: 5;\n  top: 242px;\n  -webkit-border-radius: 123px 100px;\n  -moz-border-radius: 123px 100px;\n  border-radius: 123px 100px;\n}\n#leftEye {\n  left: 196px;\n  -webkit-transform: rotate(15deg);\n  -moz-transform: rotate(15deg);\n  -o-transform: rotate(15deg);\n}\n#rightEye {\n  right: 196px;\n  -webkit-transform: rotate(-15deg);  \n  -moz-transform: rotate(-15deg);\n  -o-transform: rotate(-15deg);\n}\n.bag {\n  color: #fff;\n  font-family: Times, serif;\n  font-size: 100px;\n  position: absolute;\n  top: 270px;\n  z-index: 20;\n}\n#leftBag {\n  left: 210px;\n  -webkit-transform: rotate(-80deg);\n  -moz-transform: rotate(-80deg);\n  -o-transform: rotate(-80deg);\n}\n#rightBag {\n  right: 210px;\n  -webkit-transform: rotate(80deg);\n  -moz-transform: rotate(80deg);\n  -o-transform: rotate(80deg);\n}\n#bigRight {\n  width: 140px;\n  height: 275px;\n  background-color: #000;\n  border-top: 5px solid #fff;\n  border-right: 5px solid #fff;\n  position: absolute;\n  top: 231px;\n  right: 129px;\n  z-index: 1;\n  -webkit-border-top-right-radius: 75px;\n  -webkit-border-bottom-left-radius: 137px;     \n  -webkit-transform: rotate(-20deg);\n  -moz-border-radius-topright: 75px;\n  -moz-border-radius-bottomleft: 137px;     \n  -moz-transform: rotate(-20deg);\n  border-top-right-radius: 75px;\n  border-bottom-left-radius: 137px;     \n  -o-transform: rotate(-20deg);\n}\n.cheek {\n  height: 110px;\n  width: 120px;\n  background-color: #000;\n  position: absolute;\n  top: 320px;\n  z-index: 2;\n  border-bottom: 5px solid #fff;\n}\n#leftCheek {\n  left: 173px;\n  -webkit-transform: rotate(-44deg);\n  -moz-transform: rotate(-44deg);\n  -o-transform: rotate(-44deg);\n  border-left: 5px solid #fff;\n}\n#rightCheek {\n  right: 173px;\n  -webkit-transform: rotate(44deg);\n  -moz-transform: rotate(44deg);\n  -o-transform: rotate(44deg);\n  border-right: 5px solid #fff;\n}\n.thing {\n  height: 270px;\n  width: 50px;\n  position: absolute;\n  top: 190px;\n  background-color: #000;\n}\n#leftThing {\n  -webkit-transform: rotate(25deg);\n  -webkit-border-bottom-right-radius: 20px;\n  -webkit-border-bottom-left-radius: 150px;\n  -moz-transform: rotate(25deg);\n  -moz-border-radius-bottomright: 20px;\n  -moz-border-radius-bottomleft: 150px;\n  -o-transform: rotate(25deg);\n  border-bottom-right-radius: 20px;\n  border-bottom-left-radius: 150px;\n  left: -50px;\n}\n#rightThing {\n  -webkit-transform: rotate(-25deg);\n  -webkit-border-bottom-left-radius: 20px;\n  -webkit-border-bottom-right-radius: 150px;\n  -moz-transform: rotate(-25deg);\n  -moz-border-radius-bottomleft: 20px;\n  -moz-border-radius-bottomright: 150px;\n  -o-transform: rotate(-25deg);\n  border-bottom-left-radius: 20px;\n  border-bottom-right-radius: 150px;\n  right: -50px;\n}\n#midFace {\n  width: 260px;\n  height: 100px;\n  background-color: #000;\n  position: absolute;\n  left: 185px;\n  top: 280px;\n}\n#roundStuff {\n  position: absolute;\n  top: 275px;\n  left: 302px;\n  z-index: 50;\n}\n.roundThing {\n  height: 5px;\n  width: 25px;\n  -webkit-border-radius: 5px;\n  -moz-border-radius: 5px;\n  border-radius: 5px;\n  background-color: #fff;\n  margin-bottom: 2px;\n}\n#grill {\n  width: 170px;\n  height: 130px;\n  position: absolute;\n  left: 252px;\n  top: 390px;\n  padding-bottom: 10px;\n}\n#nose {\n  height: 25px;\n  width: 25px;\n  -webkit-border-radius: 25px;\n  -moz-border-radius: 25px;\n  border-radius: 25px;\n  position: absolute;\n  left: 303px;\n  top: 360px;\n  background: #fff;\n  z-index: 4;\n}\n.upright {\n  width: 14px;\n  height: 86px;\n  float: left;\n  margin-left: 14px;\n  background-color: #000;\n  position: relative;\n}\n.upright:first-child {\n  margin-left: 0;\n  height: 31px;\n  top: 46px;\n  -webkit-transform: matrix(1, -1.12, 0, 1, 0, 0);\n  -moz-transform: matrix(1, -1.12, 0, 1, 0, 0);\n  -o-transform: matrix(1, -1.12, 0, 1, 0, 0);\n}\n.upright:nth-child(3) {\n  height: 60px;\n  -webkit-transform: matrix(1, -1.12, 0, 1, 0, 0);\n  -moz-transform: matrix(1, -1.12, 0, 1, 0, 0);\n  -o-transform: matrix(1, -1.12, 0, 1, 0, 0);\n  top: 19px;\n}\n.upright:nth-child(6) {\n  height: 60px;\n  -webkit-transform: matrix(1, 1.12, 0, 1, 0, 0);\n  -moz-transform: matrix(1, 1.12, 0, 1, 0, 0);\n  -o-transform: matrix(1, 1.12, 0, 1, 0, 0);\n  top: 19px;\n}\n.upright:nth-child(8) {\n  height: 31px;\n  -webkit-transform: matrix(1, 1.12, 0, 1, 0, 0);\n  -moz-transform: matrix(1, 1.12, 0, 1, 0, 0);\n  -o-transform: matrix(1, 1.12, 0, 1, 0, 0);\n  top: 46px;\n}\n.bottom {\n  height: 0;\n  width: 0;\n  border-top: 7px solid transparent;\n  border-left: 7px solid transparent;\n  border-right: 7px solid black;\n  border-bottom: 10px solid black;\n  position: absolute;\n  top: 53px;\n}\n.b3, .b4 {\n  border-right: 7px solid transparent;\n  border-left: 7px solid black;\n}\n.b1 {\n  left: 0;\n  -moz-transform: translateX(-1px)\n}\n.b2 {\n  left: 28px;\n}\n.b3 {\n  left: 84px;\n}\n.b4 {\n  left: 112px;\n}\n#bottomLine {\n  height: 10px;\n  width: 145px;\n  background-color: #000;\n  position: absolute;\n  bottom: 38px;\n  left: -8px;\n}\n#chin {\n  width: 0;\n  height: 0;\n  border-top: 45px solid black;\n  border-left: 70px solid transparent;\n  border-right: 70px solid transparent;\n  position: absolute;\n  top: 500px;\n  left: 245px;\n}\n.cover {\n  background-color: #fff;\n  height: 100px;\n  width: 165px;\n  position: absolute;\n  top: 430px;\n  z-index: 15;\n  -webkit-border-top-left-radius: 78px;\n  -webkit-border-top-right-radius: 78px;\n  -moz-border-radius-topleft: 78px;\n  -moz-border-radius-topright: 78px;\n  border-top-left-radius: 78px;\n  border-top-right-radius: 78px;\n}\n#coverLeft {\n  left: 74px;\n  -webkit-transform: rotate(-15deg);\n  -moz-transform: rotate(-15deg);\n  -o-transform: rotate(-15deg);\n}\n#coverRight {\n  right: 74px;\n  -webkit-transform: rotate(15deg);\n  -moz-transform: rotate(15deg);\n  -o-transform: rotate(15deg);\n}\n.line {\n  color: #000;\n  font-size: 90px;\n  font-family: arial, sans-serif;\n  position: absolute; \n  top: 400px;\n  z-index: 40;\n}\n#leftDown {\n  left: 203px;\n  -webkit-transform: rotate(-28deg) translateX(-1px);\n  -moz-transform: rotate(-28deg);\n  -o-transform: rotate(-28deg) translateX(-2px);\n}\n#rightDown {\n  right: 204px;\n  -webkit-transform: rotate(28deg) translateX(1px);\n  -moz-transform: rotate(28deg) translate(1px);\n  -o-transform: rotate(28deg) translate(1px);\n}\n<!--\n    Thanks again to Jake Albaugh, u/dechat, and Kris Triplett:\n    http://codepen.io/jakealbaugh/full/PwLXXP/\n    http://kristriplett.com/tinker/vader.html \n-->";
+
+    nl = true;
+    openCSS = false;
+    openAmin = false;
+    animCount = 0;
+
+    writeStyleChar = function(which) {
+      markup = $('#html-text').html();
+      styles = $('#style-text').html();
+
+      switch (which) {
+        case '@':
+          if (nl) {
+            //css
+            styles += '\n\n' + which;
+            openCSS = true;
+            openAnim = true;
+          } else if (!openCSS) {
+            //html
+            markup += which;
+          }
+        break;
+
+        case '/':
+          if (nl) {
+            //css
+            styles += '\n\n' + which;
+            openCSS = true;
+          } else if (openCSS) {
+            styles += which;
+            openCSS = false;
+          } else if (!openCSS) {
+            //html
+            markup += which;
+          }
+        break;
+
+        case '.':
+          if (nl) {
+            styles += '\n\n' + which;
+            openCSS = true;
+          } else if (openCSS) {
+            styles += which;
+          } else if (!openCSS) {
+            //html
+            markup += which;
+          }
+        break;
+
+        case '#':
+          if (nl) {
+            styles += '\n\n' + which;
+            openCSS = true;
+          } else if (openCSS) {
+            styles += which;
+          } else if (!openCSS) {
+            //html
+            markup += which;
+          }
+        break;
+
+        case '}':
+          if (openAnim) {
+            styles += which;
+            if (animCount > 1) {
+              animCount = 0;
+              openAnim = false;
+              openCSS = true;
+            } else {
+              animCount += 1;
+              openAnim = true;
+              openCSS = true;
+            }
+          } else if (openCSS) {
+            styles += which;
+            openCSS = false;
+          } else if (!openCSS) {
+            //html
+            markup += which;
+          }
+        break;
+
+        default:
+          if (openCSS) {
+            styles += which;
+          } else if (!openCSS) {
+            //html
+            markup += which;
+          }
+      }
+
+      nl = ((which === '\n') ? true : false);
+
+      $('#style-text').html(styles);
+      $('#html-text').html(markup);
+      myMarkup = $("<div />").html(markup).text();
+      $('.container').html(myMarkup);
+      $('#style-tag').html(styles);
+    };
+
+    writeStyles = function(message) {
+      if (!paused) {
+        var pre;
+        if (index < message.length) {
+          pre = document.getElementById('style-text');
+          pre.scrollTop = pre.scrollHeight;
+          pres = document.getElementById('html-text');
+          pres.scrollTop = pres.scrollHeight;
+          writeStyleChar(message[index++]);
+          setTimeout((function() {
+            writeStyles(message, time);
+          }), time);
+        }
+      }
+    };
+
+    $('body').append("  <style id=\"style-tag\"></style><div class=\"container\"></div><pre class=\"pre\" id=\"html-text\"></pre><pre class=\"pre\" id=\"style-text\"></pre>");
+
+    var time = 16;
+    index = 0;
+
+    $('#slider').on('input change', function() {
+      time = $(this).val();
+    })
+    $('#pause').on('click', function() {
+      if (paused) {
+        paused = false;
+        $(this).text('[pause]');
+        writeStyles(text);
+      } else {
+        paused = true;
+        $(this).text('[resume]');
+      }
+    })
+
+    writeStyles(text);
+
+  }).call(this);
+  </script>
+</body>
+</html>
