@@ -3,19 +3,19 @@
 	<head>
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
-		<title>Presidential Solitaire</title>
+		<title>Monstercat Solitaire</title>
 		<style type="text/css">
 
 			body {
 				color: #ffffff;
-				background-color: #000000;
+				background-color: #202020;
 				margin: 0px;
 				cursor: pointer;
 				overflow: hidden;
 			}
 
 		</style>
-		<link href='img/favicon (2).ico' rel='shortcut icon'>
+		<link href='img/favicon (3).ico' rel='shortcut icon'>
 		<script type="text/javascript" async="" src="js/google-analytics_ga.js"></script><style type="text/css"></style>
 		<script src="js/jquery-1.11.2.js"></script>
 	</head>
@@ -39,7 +39,7 @@
 			info.style.width = '100%';
 			info.style.fontFamily = 'Monospace';
 			info.style.textAlign = 'center';
-			//info.innerHTML = 'click or drag';
+			info.innerHTML = 'click or drag <br> original by <a href="http://mrdoob.com/lab/javascript/effects/solitaire/">mrdoob</a>';
 			document.body.appendChild( info );
 
 			var canvas = document.createElement( 'canvas' );
@@ -50,10 +50,10 @@
 
 			var context = canvas.getContext( '2d' );
 
-			var id = 44;
+			var id = 22;
 
-			var cwidth = 450, cwidthhalf = cwidth / 2;
-			var cheight = 254, cheighthalf = cheight / 2;
+			var cwidth = 167, cwidthhalf = cwidth / 2;
+			var cheight = 167, cheighthalf = cheight / 2;
 
 			var particles = [];
 
@@ -96,11 +96,11 @@
 			}
 
 			var image = document.createElement( 'img' );
-			image.src = "img/all-presidents-large.jpg";
+			image.src = "img/mcat.jpg";
 
 			var throwCard = function ( x, y ) {
 
-				id > 0 ? id -- : id = 44;
+				id > 0 ? id -- : id = 22;
 
 				var particle = new Particle( id, x, y, Math.floor( Math.random() * 6 - 3 ) * 2, - Math.random() * 16 );
 				particles.push( particle );
@@ -170,8 +170,5 @@
 			}, 1000 / 60 );
 
 		</script>
-		<div style="position: absolute; top: 10px; width: 100%; font-family: monospace; text-align: center;">click or drag <br> original by <a href="http://mrdoob.com/lab/javascript/effects/solitaire/">mrdoob</a></div>
-		<canvas width="1366" height="643" style="position: absolute;"></canvas>
-	
 	</body>
 </html>
