@@ -417,7 +417,7 @@ hr.bold {
 --- Intro
 ============================ */
 
-.hero { background: url(../img/pillars.jpg) no-repeat center center; opacity: 0.94; filter: alpha(opacity=94); -webkit-background-size: cover; -moz-background-size: cover; -o-background-size: cover; background-size: cover; padding: 200px 0 200px 0; height: auto; }
+.hero { background: url(../img/bg.png) no-repeat center center; opacity: 1.00; filter: alpha(opacity=100); -webkit-background-size: cover; -moz-background-size: cover; -o-background-size: cover; background-size: cover; padding: 200px 0 200px 0; height: auto; }
 .hero h1 { font-size: 40px; letter-spacing: 12px; margin: 40px 0 10px; font-weight: 900; color: #fff;}
 .hero h1 span { color: #a1a9b0; display: inline-block; }
 .hero p { font-size: 24px; font-weight: 400; color: #fefefe; }
@@ -660,9 +660,9 @@ form#contact-form input:focus,form#contact-form select:focus,form#contact-form t
 	text-align: left;
 }
 
-.background { background: url(../img/galaxy.jpg) no-repeat center center; opacity: 0.8; 
-	filter: alpha(opacity=80); -webkit-background-size: cover; -moz-background-size: cover; 
-	-o-background-size: cover; background-size: cover; padding: 200px 0 200px 0; height: auto; z-index: -1}
+.background { background: url(../img/galaxy.jpg) no-repeat center center; opacity: 1.00; 
+	filter: alpha(opacity=100); -webkit-background-size: cover; -moz-background-size: cover; 
+	-o-background-size: cover; background-size: cover; padding: 20px 0 0px 0; height: auto; z-index: -1}
 
 #background { z-index: -1 }
 
@@ -799,7 +799,7 @@ footer {
 
 footer {
 	text-align: center;
-	padding: 50px 0 30px ;
+	padding: 50px 0 30px;
 	
 }
 
