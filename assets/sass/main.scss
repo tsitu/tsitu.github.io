@@ -452,7 +452,7 @@
 
 		&:before {
 			@include vendor('transition', 'opacity #{_duration(transition)} ease-in-out');
-			background: url('img/overlay.png');
+			background: url('img/overlay-min.png');
 			border-radius: _size(border-radius);
 			content: '';
 			display: block;
@@ -494,7 +494,7 @@
 				}
 
 				&:before {
-					background: url('img/overlay.png'), url('img/overlay.png');
+					background: url('img/overlay-min.png'), url('img/overlay-min.png');
 					opacity: 1.0;
 				}
 			}
@@ -903,7 +903,7 @@
 		@include vendor('justify-content', 'space-between');
 		background-color:		_palette(accent2, bg);
 		background-attachment:	scroll,								fixed;
-		background-image:		url('img/overlay.png'),			url('../../img/bg.jpg');
+		background-image:		url('img/overlay-min.png'),			url('../../img/bg-min.jpg');
 		background-position:	top left,							top left;
 		background-repeat:		repeat,								no-repeat;
 		background-size:		auto,								auto 100%;
@@ -1293,7 +1293,7 @@
 			#footer {
 				background-attachment:	scroll;
 				background-color:		_palette(accent2, bg);
-				background-image:		url('img/overlay.png'),		url('../../img/bg.jpg');
+				background-image:		url('img/overlay-min.png'),		url('../../img/bg-min.jpg');
 				background-position:	top left,						bottom center;
 				background-repeat:		repeat,							no-repeat;
 				background-size:		auto,							cover;
