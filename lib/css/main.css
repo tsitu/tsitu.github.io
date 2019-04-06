@@ -1566,8 +1566,7 @@
 		}
 
 	body, input, select, textarea {
-		/*font-family: "Source Sans Pro", Helvetica, sans-serif;*/
-		font-family: "Palatino Linotype", Georgia;
+		font-family: "Palatino Linotype", Georgia, "Source Sans Pro", Helvetica, sans-serif;
 		color: #6f6f6f;
 		font-size: 16pt;
 		font-weight: 400;
